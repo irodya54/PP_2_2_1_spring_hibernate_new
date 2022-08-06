@@ -14,12 +14,15 @@ public class Car {
     private String model;
 
     @Column(name = "series")
-    private String series;
+    private int series;
+
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL)
+    private User user;
 
     public Car() {
     }
 
-    public Car(String model, String series) {
+    public Car(String model, int series) {
         this.model = model;
         this.series = series;
     }
@@ -40,11 +43,11 @@ public class Car {
         this.model = model;
     }
 
-    public String getSeries() {
+    public int getSeries() {
         return series;
     }
 
-    public void setSeries(String series) {
+    public void setSeries(int series) {
         this.series = series;
     }
 
